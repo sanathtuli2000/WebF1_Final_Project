@@ -41,6 +41,7 @@ const settings = require('./config/settings')
 // mongo db url
 const db = settings.mongoDBUrl
 
+
 // attempt to connect with DB
 mongoose
     .connect(db)

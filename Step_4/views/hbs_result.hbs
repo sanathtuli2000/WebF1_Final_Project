@@ -1,0 +1,32 @@
+<table class="table table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                     <th>Sale ID</th>
+                    <th>Sale Date</th>
+                    <th>Items</th>
+                    <th>Store Location</th>
+                    <th>Customer</th>
+                    <th>Coupon Used</th>
+                    <th>Purchase Method</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each sales}}
+                    <tr>
+                        <td>{{this._id}}</td>
+                        <td>{{this.saleDate}}</td>
+                        <td>
+                            <ul>
+                                {{#each this.items}}
+                                    <li>{{this.name}} - {{this.quantity}} x {{this.price}}</li>
+                                {{/each}}
+                            </ul>
+                        </td>
+                        <td>{{this.storeLocation}}</td>
+                        <td>{{this.customer.gender}} {{this.customer.age}} {{this.customer.email}} ({{this.customer.satisfaction}})</td>
+                        <td>{{this.couponUsed}}</td>
+                        <td>{{this.purchaseMethod}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
