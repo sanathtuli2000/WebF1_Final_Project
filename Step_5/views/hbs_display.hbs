@@ -1,0 +1,16 @@
+<p>
+    Successfully validated! <br>
+    Welcome <input type="text" id="userid" readonly>
+</p>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const queryString = window.location.search;
+        const dum = new URLSearchParams(queryString);
+        const user = dum.get('username');
+        document.getElementById('userid').value = user;
+    });
+
+    ///api/auth/hbs_display?username=' + user
+
+</script>

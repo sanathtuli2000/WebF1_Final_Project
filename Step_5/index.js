@@ -14,10 +14,14 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 require('dotenv').config();
-
+const jwt = require("jsonwebtoken");
 const port = process.env.PORT || 8000
-
 const app = express()
+var database = require('./config/database');
+const { json } = require('express');
+
+
+database.initialize(process.env.DBURL||database.url);
 
 // setup handlebars
 app.engine(
@@ -32,6 +36,7 @@ app.set(
     '.hbs'
 )
 
+var User = require('./models/user');
 
 // middleware for bodyparser
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -52,10 +57,47 @@ mongoose
 // Get profile routes
 const sale = require('./routes/api/sale')
 
+//get user
+var User = require('./models/user');
+
+/* */
+
+
+
 app.get('/', (req, res) => {
     res.send('Project is Running')
 })
 
+app.get("/hbs_validate", async(req, res) => {
+    res.render(
+        'hbs_validate'
+    )
+});
+
+app.get("/hbs_login", async(req, res) => {
+    res.render(
+        'hbs_login'
+    )
+});
+
+app.get("/hbs_register", async(req, res) => {
+    res.render(
+        'hbs_register'
+    )
+});
+
+
+app.get("/hbs_display", async(req, res) => {
+    res.render(
+        'hbs_display'
+    )
+});
+
+app.get("/hbs_token_auth_failed", async(req, res) => {
+    res.render(
+        'hbs_token_auth_failed'
+    )
+});
 // actual routes
 app.use('/api/sale', sale)
 

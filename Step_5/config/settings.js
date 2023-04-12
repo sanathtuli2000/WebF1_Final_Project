@@ -11,5 +11,6 @@ No part of this assignment has been copied manually or electronically from any o
 *******************************************************************************/
 
 module.exports = {
-    mongoDBUrl: process.env.MONGODB_URI
+    mongoDBUrl: process.env.MONGODB_URI,
+    secret: 'eggwhitesonly'
 }

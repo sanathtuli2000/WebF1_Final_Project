@@ -1,0 +1,17 @@
+<form method="POST" action="/api/sale/register">
+    <input type="text" name="name" placeholder="Enter Name"> <br>
+    <input type="text" name="username" placeholder="Enter Username"> <br>
+    <input type="text" name="password" placeholder="Enter Password"> <br>
+    <br>
+    <input type="submit">  <input type="reset"> <br><br>
+    {{#if output}}
+        <p>
+            {{output}}
+        </p>
+    {{/if}}
+    {{#if username_already_exists}}
+        <p>
+            {{username_already_exists}}
+        </p>
+    {{/if}}
+</form>
